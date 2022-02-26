@@ -1,0 +1,43 @@
+<!-- <p>login works!</p> -->
+
+
+<body>
+  <div class="container">
+    <div class="forms">
+        <div class="form-content">
+        <div class="signup-form">
+          <div class="title">Login</div>
+        <form  [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="email" placeholder="Enter your email" name="email" formControlName="email" > 
+                <div *ngIf="email?.invalid && email?.touched" style="color: red;">*Enter valid email Id</div>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Enter your password" name="pass" formControlName="password">
+                <div *ngIf="pass?.invalid && pass?.touched" style="color: red;">*Enter valid Password</div>
+              </div>
+              <div class="button input-box">
+                <input [disabled]="loginForm.invalid" type="Submit">
+              </div>
+              <div class="text sign-up-text">Don't have an account?  <a routerLink="/auth/register">Register</a></div>
+            </div>
+      </form>
+    </div>
+    </div>
+    </div>
+
+    <div class="cover">
+        <div class="front">
+          <img src="https://ess.ppapco.in/ESSPPAP/assets/images/image__login.png">
+        </div>
+    </div>
+
+  </div>
+
+</body>
+
+
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="cover">
+      <div class="front">
+        <img src="https://wenxichu.com/wp-content/uploads/2020/03/Online-Store-768x506.jpg" alt="" width="100px" height="50px">
+      </div>
+    </div>
+    <div class="forms">
+        <div class="form-content">
+        <div class="signup-form">
+          <div class="title">Registration</div>
+
+        <form  [formGroup]="regForm" (ngSubmit)="Reg()">
+
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="email" placeholder="Enter your email" name="email" formControlName="email" > 
+                <div *ngIf="email?.invalid && email?.touched" style="color: red;">*Enter valid email Id</div>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Enter your password" name="password" formControlName="password">
+                <div *ngIf="password?.invalid && password?.touched" style="color: red;">*Enter valid Password</div>
+
+              </div>
+              <div class="button input-box">
+                <input [disabled]="regForm.invalid" type="Submit">
+              </div>
+              <div class="text sign-up-text">Already have an account? <a routerLink="/auth/login">Login</a></div>
+
+            </div>
+      </form>
+    </div>
+    </div>
+    </div>
+  </div>
+</body>
+</html>
+

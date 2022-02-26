@@ -1,0 +1,297 @@
+<div class="container" id="mainCont">
+    <div class="container" id="cont1">
+        <div>
+            <mat-card class="example-card" align="center">
+                <mat-card-title>
+                    Products
+                </mat-card-title>
+                <mat-card-content>
+                    <img mat-card-xl-image
+                        src='https://www.chemtradeasia.com/blog/wp-content/uploads/2016/04/products.png'>
+                </mat-card-content>
+                <mat-card-footer>
+                    Current Stock: <b>{{currentProductsStock}}</b>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+        <div>
+            <mat-card class="example-card" align="center">
+                <mat-card-title>
+                    Users
+                </mat-card-title>
+                <mat-card-content>
+                    <img mat-card-xl-image
+                        src='https://i.pinimg.com/564x/92/55/0e/92550e6fadb12fad57eebf513b296cf0--blog-search-different-types-of.jpg'>
+                </mat-card-content>
+                <mat-card-footer>
+                    Current users: <b>{{currentUsers}}</b>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+        <div>
+            <mat-card class="example-card" align="center">
+                <mat-card-title>
+                    Admins
+                </mat-card-title>
+                <mat-card-content>
+
+                    <img mat-card-xl-image
+                        src='https://content.instructables.com/ORIG/FC3/QMOU/J2GEURC6/FC3QMOUJ2GEURC6.png?auto=webp&frame=1&md=082b0c44c3eef54af16c6a4464bf7d72'>
+                </mat-card-content>
+                <mat-card-footer>
+                    Current Admins: <b>{{currentAdmins}}</b>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </div>
+    <br>
+    <!-- admin add button -->
+    <div class="container d-flex">
+        <div>
+            <mat-card class="example-card " align="center" id="addadmin">
+                <mat-card-content>
+                    <img mat-card-sm-image
+                        src='https://icon-library.com/images/system-administrator-icon/system-administrator-icon-2.jpg'>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button class="btn btn-primary" mat-raised-button data-toggle="modal" data-target="#exampleModal"
+                        matTooltip="Add sub Admins"
+                        aria-label="Button that displays a tooltip when focused or hovered over">
+                        Add Admin</button>
+                </mat-card-actions>
+                <mat-card-footer>
+                    <mat-progress-bar mode="query" color="accent"></mat-progress-bar>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+        <div>
+            <mat-card class="example-card" id="addproducts" align="center">
+                <mat-card-content>
+                    <img mat-card-sm-image
+                        src='https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/image/rDtN98Qoishumwih/product-add-lite-ecommerce-icon_fkhcuaUu_thumb.jpg'>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button class="btn btn-warning" mat-raised-button data-toggle="modal" data-target="#exampleModal1"
+                        matTooltip="Add new Products"
+                        aria-label="Button that displays a tooltip when focused or hovered over">
+                        Add Products
+                    </button>
+                </mat-card-actions>
+                <mat-card-footer>
+                    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </div>
+    <br>
+
+    <div>
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <b>View Products</b>
+                    </mat-panel-title>
+                    <!-- <mat-panel-description>
+                      Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                  </mat-panel-description> -->
+                </mat-expansion-panel-header>
+                <div>
+                    <table class="table text-center">
+                        <thead class="thead-dark">
+                            <tr>
+                                <!-- <th scope="col">S.No</th> -->
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Product Price</th>
+                                <th scope="col">Product Quantity</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor= "let p of productData; index as i">
+                                <!-- <th scope="row">{{p.id}}</th> -->
+                                <td>{{p.name}}</td>
+                                <td>{{p.price}}</td>
+                                <td>{{p.quantity}}</td>
+                                <td><img src="p.imgUrl" alt="" height="50" width="50"></td>
+                                <td>
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <button class="btn btn-warning">
+                                                <mat-icon>create</mat-icon>
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-danger">
+                                                <mat-icon>delete_forever</mat-icon>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+    <br>
+    <!-- User details Table -->
+    <div class="d-flex">
+        <div>
+            <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <b>View User Details</b>
+                        </mat-panel-title>
+                        <!-- <mat-panel-description>
+                    Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                </mat-panel-description> -->
+                    </mat-expansion-panel-header>
+                    <div>
+                        <table class="table text-center">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">S.No</th>
+                                    <th scope="col">User Name</th>
+                                    <th scope="col">User Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>abc@gmail.com</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+        <br>
+        <!-- Admin details table -->
+        <div>
+            <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <b>View Admins</b>
+                        </mat-panel-title>
+                        <!-- <mat-panel-description>
+                  Currently I am {{panelOpenState ? 'open' : 'closed'}}
+              </mat-panel-description> -->
+                    </mat-expansion-panel-header>
+                    <div>
+                        <table class="table text-center">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">S.No</th>
+                                    <th scope="col">Admin Name</th>
+                                    <th scope="col">Admin Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>abc@gmail.com</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+</div>
+
+<!-- Add admin popup with form -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Admin</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- admin reg form -->
+                <form [formGroup]="adminForm" class="normal-form">
+                    <div class="controles-container">
+                        <mat-form-field>
+                            <input matInput type="text" formControlName="fullname" placeholder="Full Name">
+                            <mat-error>This filed is mandatory</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput type="email" formControlName="email" placeholder="Email">
+                            <mat-error>Invalid email address</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput type="password" formControlName="password" placeholder="Password">
+                            <mat-error>Invalid password</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput type="text" formControlName="role" placeholder="role"
+                                [(ngModel)]="userrole">
+                            <mat-error>This filed is mandatory</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" mat-raised-button class="btn btn-danger" data-dismiss="modal" #closemodal1
+                            id="closebtn1">X Close</button>&nbsp;
+                        <button type="submit" mat-raised-button class="btn btn-success" [disabled]="adminForm.invalid"
+                            (click)="validateadmin()">=> Add Admin</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- add product popup model with form -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Products</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- add product form -->
+                <form [formGroup]="productForm" class="normal-form">
+                    <div class="controles-container">
+                        <mat-form-field>
+                            <input matInput type="text" formControlName="name" placeholder="Product Name">
+                            <mat-error>This filed is mandatory</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput type="number" formControlName="price" placeholder="Product Price">
+                            <mat-error>This filed is mandatory</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput type="number" formControlName="quantity" placeholder="Product Quantity">
+                            <mat-error>This filed is mandatory</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput type="url" formControlName="imgUrl" placeholder="Product imgUrl">
+                            <mat-error>This filed is mandatory</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" mat-raised-button class="btn btn-danger" data-dismiss="modal" #closemodal1
+                            id="closebtn2">X Close</button>&nbsp;
+                        <button type="submit" mat-raised-button class="btn btn-success" [disabled]="productForm.invalid"
+                            (click)="validateproduct()">=> Add Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
